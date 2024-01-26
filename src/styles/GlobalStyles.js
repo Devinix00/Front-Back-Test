@@ -32,6 +32,11 @@ const GlobalStyles = createGlobalStyle`
       padding: 0;
       cursor: pointer;
     }
+
+    *{
+      color: white;
+      word-break: keep-all;
+    }
 `;
 
 export default GlobalStyles;
