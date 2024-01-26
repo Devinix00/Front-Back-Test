@@ -2,6 +2,7 @@ import { Button } from "antd";
 import styles from "./InitialPage.module.scss";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import DescriptionSection from "../../components/descriptionSection/DescriptionSection";
 
 function InitialPage(): JSX.Element {
   return (
@@ -16,11 +17,7 @@ function InitialPage(): JSX.Element {
       </motion.h2>
 
       <section className={styles.descriptionContainer}>
-        <motion.section
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
+        <DescriptionSection>
           <h3>프론트엔드</h3>
           <p>
             프론트엔드 개발자는 서버와 통신하여 웹 애플리케이션의 사용자
@@ -29,13 +26,9 @@ function InitialPage(): JSX.Element {
             역할을 합니다. 사용자의 요구사항과 피드백을 기반으로 시각적인 부분과
             사용자가 직접 상호작용하는 부분을 개발하고 최적화합니다.
           </p>
-        </motion.section>
+        </DescriptionSection>
 
-        <motion.section
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
+        <DescriptionSection>
           <h3>백엔드</h3>
           <p>
             백엔드 개발자는 서버, 데이터베이스, 애플리케이션의 서버 사이드
@@ -43,7 +36,7 @@ function InitialPage(): JSX.Element {
             데이터베이스, 애플리케이션의 내부 작동을 관리하고, 데이터 처리, API
             구현, 보안 조치 등을 담당합니다.
           </p>
-        </motion.section>
+        </DescriptionSection>
       </section>
       <motion.div
         initial={{ opacity: 0, y: 30 }}

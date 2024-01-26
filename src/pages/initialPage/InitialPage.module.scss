@@ -33,26 +33,6 @@
       flex-direction: row;
       gap: 10rem;
     }
-
-    section {
-      padding: 2rem;
-      border-radius: 5rem;
-      box-shadow: 0px 0px 10px 0px #747474;
-
-      @include respond-above("xl") {
-        width: 50%;
-      }
-
-      h3 {
-        font-size: 2.2rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-      }
-      p {
-        font-size: 1.6rem;
-        line-height: 150%;
-      }
-    }
   }
 
   .startTestButton {
