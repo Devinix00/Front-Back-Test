@@ -18,7 +18,7 @@ const renderResults = (developer: "front" | "back" | "fullStack" | null) => {
               <p className={styles.detailTitle}>[하는일]</p>
               <p className={styles.dscription}>
                 사용자가 직접 상호작용하는 웹사이트나 애플리케이션의 사용자
-                인터페이스를 개발합니다. 사용자 경험(UX)와 사용자
+                인터페이스를 개발합니다. 사용자 경험(UX)과 사용자
                 인터페이스(UI)를 최적화하는 것이 주요 목표이며 백엔드와 통신해
                 화면상의 모든 로직의 개발과 퍼블리싱을 담당합니다.
               </p>
@@ -128,7 +128,6 @@ const renderResults = (developer: "front" | "back" | "fullStack" | null) => {
 };
 
 function ResultPage(): JSX.Element {
-  const location = useLocation();
   const { isModalOpen, showModal, handleOk, handleCancel } = useModal();
   const { frontArray, backArray } = useQuestionStore();
   const { handleRestart } = useRestart();
@@ -150,8 +149,9 @@ function ResultPage(): JSX.Element {
     }
   }, [frontArray, backArray]);
 
-  const handleCopyClipBoard = async (text: string) => {
-    await navigator.clipboard.writeText(text);
+  const handleCopyClipBoard = async () => {
+    await navigator.clipboard.writeText(window.location.href);
+
     alert("클립보드에 링크가 복사되었어요.");
   };
 
@@ -167,9 +167,7 @@ function ResultPage(): JSX.Element {
         >
           {renderResults(developer)}
           <Button
-            onClick={() => {
-              handleCopyClipBoard(location.pathname);
-            }}
+            onClick={handleCopyClipBoard}
             type="primary"
             className={styles.copyLinkButton}
           >
