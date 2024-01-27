@@ -3,6 +3,7 @@ import styles from "./InitialPage.module.scss";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import DescriptionSection from "../../components/descriptionSection/DescriptionSection";
+import { Link } from "react-router-dom";
 
 function InitialPage(): JSX.Element {
   return (
@@ -43,9 +44,11 @@ function InitialPage(): JSX.Element {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <Button type="primary" className={styles.startTestButton}>
-          Test 시작하기!
-        </Button>
+        <Link to="/testPage/1">
+          <Button type="primary" className={styles.startTestButton}>
+            Test 시작하기!
+          </Button>
+        </Link>
         <DevelopedBy>Developed By Devinix</DevelopedBy>
       </motion.div>
     </div>
