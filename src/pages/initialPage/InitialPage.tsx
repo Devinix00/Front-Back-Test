@@ -9,10 +9,10 @@ import { useEffect } from "react";
 
 function InitialPage(): JSX.Element {
   const { removeAnswers } = useQuestionStore();
-  
+
   useEffect(() => {
     removeAnswers();
-  }, []);
+  }, [removeAnswers]);
 
   return (
     <div className={styles.container}>
