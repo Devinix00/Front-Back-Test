@@ -4,7 +4,6 @@ import styles from "./ResultPage.module.scss";
 import { motion } from "framer-motion";
 import { Button, Modal } from "antd";
 import useRestart from "../../hooks/useRestart/useRestart";
-import { useLocation } from "react-router-dom";
 import useModal from "../../hooks/useModal/useModal";
 
 const renderResults = (developer: "front" | "back" | "fullStack" | null) => {
