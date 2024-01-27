@@ -10,6 +10,10 @@ function useNextPage(id: string | undefined): IReturn {
     if (!id) return;
     const nextId = parseInt(id, 10) + 1;
     navigate(`/testPage/${nextId}`);
+
+    if (id === "10") {
+      navigate("/resultPage");
+    }
   };
 
   return { handleNextPageId };
