@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import useQuestionStore from "../../stores/useQuestionStore/useQuestionStore";
 import styles from "./ResultPage.module.scss";
 import { motion } from "framer-motion";
-import { Button } from "antd";
+import { Button, Modal } from "antd";
 import useRestart from "../../hooks/useRestart/useRestart";
+import { useLocation } from "react-router-dom";
+import useModal from "../../hooks/useModal/useModal";
 
 const renderResults = (developer: "front" | "back" | "fullStack" | null) => {
   switch (developer) {
@@ -126,6 +128,8 @@ const renderResults = (developer: "front" | "back" | "fullStack" | null) => {
 };
 
 function ResultPage(): JSX.Element {
+  const location = useLocation();
+  const { isModalOpen, showModal, handleOk, handleCancel } = useModal();
   const { frontArray, backArray } = useQuestionStore();
   const { handleRestart } = useRestart();
   const [developer, setDeveloper] = useState<
@@ -146,6 +150,11 @@ function ResultPage(): JSX.Element {
     }
   }, [frontArray, backArray]);
 
+  const handleCopyClipBoard = async (text: string) => {
+    await navigator.clipboard.writeText(text);
+    alert("클립보드에 링크가 복사되었어요.");
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -157,9 +166,22 @@ function ResultPage(): JSX.Element {
           className={styles.resultContainer}
         >
           {renderResults(developer)}
+          <Button
+            onClick={() => {
+              handleCopyClipBoard(location.pathname);
+            }}
+            type="primary"
+            className={styles.copyLinkButton}
+          >
+            링크 공유하기
+          </Button>
           <section className={styles.buttons}>
-            <Button type="primary" className={styles.button}>
-              결과 공유
+            <Button
+              onClick={showModal}
+              type="primary"
+              className={styles.button}
+            >
+              개발자 정보
             </Button>
             <Button
               onClick={handleRestart}
@@ -171,6 +193,15 @@ function ResultPage(): JSX.Element {
           </section>
         </motion.div>
       </div>
+      <Modal
+        title="개발자 정보"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer="none"
+        width={900}
+        className={styles.modal}
+      ></Modal>
     </div>
   );
 }

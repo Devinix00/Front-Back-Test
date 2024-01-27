@@ -48,9 +48,21 @@
         }
       }
 
+      .copyLinkButton {
+        width: 100%;
+        margin-bottom: 1rem;
+        background-color: #1677ff;
+        box-shadow: 0px 0px 10px #1677ff;
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+          box-shadow: 0px 0px 20px #1677ff;
+        }
+      }
+
       .buttons {
         display: flex;
-        gap: 2rem;
+        gap: 1rem;
 
         .button {
           width: 50%;
