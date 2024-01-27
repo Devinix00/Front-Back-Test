@@ -1,18 +1,25 @@
-import { useParams, useNavigate } from "react-router-dom";
+import styles from "./TestPage.module.scss";
+import { Progress } from "antd";
+import { useParams } from "react-router-dom";
+import useNextPage from "../../hooks/useNextPage/useNextPage";
+import TestButtonContainer from "../../components/testButtonContainer/TestButtonContainer";
 
 const TestPage = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
-
-  const handleButtonClick = () => {
-    if (!id) return;
-    const nextId = parseInt(id, 10) + 1;
-    navigate(`/testPage/${nextId}`);
-  };
+  const { handleNextPageId } = useNextPage(id);
 
   return (
-    <div>
-      <button onClick={handleButtonClick}>ID 증가</button>
+    <div className={styles.container}>
+      <div className={styles.wrapper}>
+        <section>
+          <h2>
+            Question{id}. 웹 애플리케이션에서 사용자와의 상호작용을 구현하는
+            데에 관심이 있으신가요?
+          </h2>
+        </section>
+        <TestButtonContainer handleNextPageId={handleNextPageId} />
+        <Progress percent={15} status="active" className={styles.progress} />
+      </div>
     </div>
   );
 };

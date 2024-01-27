@@ -1,21 +1,25 @@
-import {
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import InitialPage from "./pages/initialPage/InitialPage";
 import GlobalStyles from "./styles/GlobalStyles";
 import TestPage from "./pages/testPage/TestPage";
+import ErrorPage from "./pages/errorPage/ErrorPage";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route>
-      <Route path="/" element={<InitialPage />} />
-      <Route path="testPage/:id" element={<TestPage />} />
-    </Route>
-  )
-);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    children: [
+      {
+        path: "/",
+        element: <InitialPage />,
+      },
+      {
+        path: "testPage/:id",
+        element: <TestPage />,
+      },
+    ],
+    errorElement: <ErrorPage />,
+  },
+]);
 
 function App() {
   return (
