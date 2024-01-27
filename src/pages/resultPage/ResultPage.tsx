@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import useQuestionStore from "../../stores/useQuestionStore/useQuestionStore";
 import styles from "./ResultPage.module.scss";
 import { motion } from "framer-motion";
 import { Button, Modal } from "antd";
@@ -128,25 +127,24 @@ const renderResults = (developer: "front" | "back" | "fullStack" | null) => {
 
 function ResultPage(): JSX.Element {
   const { isModalOpen, showModal, handleOk, handleCancel } = useModal();
-  const { frontArray, backArray } = useQuestionStore();
   const { handleRestart } = useRestart();
   const [developer, setDeveloper] = useState<
     "front" | "back" | "fullStack" | null
   >(null);
 
   useEffect(() => {
-    const front = frontArray.length > backArray.length;
-    const back = frontArray.length < backArray.length;
-    const fullStack = frontArray.length === backArray.length;
+    const searchParams = new URLSearchParams(window.location.search);
+    const frontCount = parseInt(searchParams.get("front") || "0");
+    const backCount = parseInt(searchParams.get("back") || "0");
 
-    if (front) {
+    if (frontCount > backCount) {
       setDeveloper("front");
-    } else if (back) {
+    } else if (backCount > frontCount) {
       setDeveloper("back");
-    } else if (fullStack) {
+    } else {
       setDeveloper("fullStack");
     }
-  }, [frontArray, backArray]);
+  }, []);
 
   const handleCopyClipBoard = async () => {
     await navigator.clipboard.writeText(window.location.href);
