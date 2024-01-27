@@ -3,6 +3,7 @@ import InitialPage from "./pages/initialPage/InitialPage";
 import GlobalStyles from "./styles/GlobalStyles";
 import TestPage from "./pages/testPage/TestPage";
 import ErrorPage from "./pages/errorPage/ErrorPage";
+import ResultPage from "./pages/resultPage/ResultPage";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "testPage/:id",
         element: <TestPage />,
+      },
+      {
+        path: "resultPage",
+        element: <ResultPage />,
       },
     ],
     errorElement: <ErrorPage />,

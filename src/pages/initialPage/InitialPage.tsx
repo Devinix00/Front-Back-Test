@@ -4,8 +4,16 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import DescriptionSection from "../../components/descriptionSection/DescriptionSection";
 import { Link } from "react-router-dom";
+import useQuestionStore from "../../stores/useQuestionStore/useQuestionStore";
+import { useEffect } from "react";
 
 function InitialPage(): JSX.Element {
+  const { removeAnswers } = useQuestionStore();
+  
+  useEffect(() => {
+    removeAnswers();
+  }, []);
+
   return (
     <div className={styles.container}>
       <motion.h2

@@ -1,18 +1,28 @@
 import { useNavigate } from "react-router-dom";
+import useQuestionStore from "../../stores/useQuestionStore/useQuestionStore";
 
 interface IReturn {
-  handleNextPageId: () => void;
+  handleNextPageId: (type: "yes" | "no") => void;
 }
 
 function useNextPage(id: string | undefined): IReturn {
+  const { addAnswers } = useQuestionStore();
   const navigate = useNavigate();
-  const handleNextPageId = () => {
-    if (!id) return;
-    const nextId = parseInt(id, 10) + 1;
-    navigate(`/testPage/${nextId}`);
+  const numberId = Number(id);
 
-    if (id === "10") {
+  const handleNextPageId = (type: string) => {
+    if (numberId === 10) {
+      if (type === "yes") {
+        addAnswers(numberId % 2 === 1 ? "front" : "back");
+      }
       navigate("/resultPage");
+    } else {
+      const nextId = numberId + 1;
+      navigate(`/testPage/${nextId}`);
+
+      if (type === "yes") {
+        addAnswers(numberId % 2 === 1 ? "front" : "back");
+      }
     }
   };
 

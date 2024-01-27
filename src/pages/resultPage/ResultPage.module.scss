@@ -1,0 +1,51 @@
+@import "/src/styles/breakpoints";
+@import "/src/styles/mixins";
+
+.container {
+  .wrapper {
+    width: 80%;
+    margin: 0 auto;
+
+    @include respond-above("md") {
+      width: 45rem;
+    }
+
+    .title {
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 3.8rem;
+    }
+
+    .mainSection {
+      margin-top: 4rem;
+      padding: 2rem;
+      box-shadow: 0px 0px 10px 0px #747474;
+      border-radius: 2rem;
+
+      .developerTypeTitle {
+        font-size: 2.8rem;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .detailSection {
+        margin-bottom: 4rem;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        .detailTitle {
+          font-weight: 600;
+          font-size: 2.2rem;
+        }
+
+        .dscription {
+          margin-top: 1rem;
+          font-size: 1.6rem;
+          line-height: 175%;
+        }
+      }
+    }
+  }
+}
