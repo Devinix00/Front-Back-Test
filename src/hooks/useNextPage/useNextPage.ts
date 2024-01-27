@@ -15,11 +15,11 @@ function useNextPage(id: string | undefined) {
       } else {
         searchParams.set("back", (backCount + 1).toString());
       }
+    }
 
-      if (numberId === 10) {
-        navigate(`/resultPage?${searchParams.toString()}`);
-        return;
-      }
+    if (numberId === 10) {
+      navigate(`/resultPage?${searchParams.toString()}`);
+      return;
     }
 
     const nextId = numberId + 1;
