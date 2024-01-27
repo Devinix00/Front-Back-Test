@@ -127,7 +127,7 @@ const renderResults = (developer: "front" | "back" | "fullStack" | null) => {
 };
 
 function ResultPage(): JSX.Element {
-  const { isModalOpen, showModal, handleOk, handleCancel } = useModal();
+  const { isModalOpen, showModal, handleCancel } = useModal();
   const { handleRestart } = useRestart();
   const [developer, setDeveloper] = useState<
     "front" | "back" | "fullStack" | null
