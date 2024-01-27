@@ -9,9 +9,9 @@ interface IProps {
 function DescriptionSection({ children }: IProps): JSX.Element {
   return (
     <motion.section
-      initial={{ opacity: 0, y: -30 }}
+      initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.4 }}
       className={styles.container}
     >
       {children}

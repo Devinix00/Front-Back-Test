@@ -9,9 +9,9 @@ function InitialPage(): JSX.Element {
   return (
     <div className={styles.container}>
       <motion.h2
-        initial={{ opacity: 0, y: -30 }}
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.4 }}
         className={styles.title}
       >
         프론트엔드 vs 백엔드 성향찾기 Test
@@ -40,9 +40,9 @@ function InitialPage(): JSX.Element {
         </DescriptionSection>
       </section>
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.4 }}
       >
         <Link to="/testPage/1">
           <Button type="primary" className={styles.startTestButton}>
