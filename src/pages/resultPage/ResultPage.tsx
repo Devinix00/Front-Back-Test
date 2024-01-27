@@ -2,17 +2,13 @@ import { useEffect, useState } from "react";
 import useQuestionStore from "../../stores/useQuestionStore/useQuestionStore";
 import styles from "./ResultPage.module.scss";
 import { motion } from "framer-motion";
+import { Button } from "antd";
 
 const renderResults = (developer: "front" | "back" | "fullStack" | null) => {
   switch (developer) {
     case "front":
       return (
-        <motion.section
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className={styles.mainSection}
-        >
+        <section className={styles.mainSection}>
           <section className={styles.detailSection}>
             <h2 className={styles.developerTypeTitle}>프론트엔드 개발자</h2>
             <section className={styles.detailSection}>
@@ -49,17 +45,12 @@ const renderResults = (developer: "front" | "back" | "fullStack" | null) => {
               </p>
             </section>
           </section>
-        </motion.section>
+        </section>
       );
 
     case "back":
       return (
-        <motion.section
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className={styles.mainSection}
-        >
+        <section className={styles.mainSection}>
           <h2 className={styles.developerTypeTitle}>백엔드 개발자</h2>
           <section className={styles.detailSection}>
             <p className={styles.detailTitle}>[하는일]</p>
@@ -90,17 +81,12 @@ const renderResults = (developer: "front" | "back" | "fullStack" | null) => {
               컨테이너화 기술 등이 포함됩니다.
             </p>
           </section>
-        </motion.section>
+        </section>
       );
 
     case "fullStack":
       return (
-        <motion.section
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className={styles.mainSection}
-        >
+        <section className={styles.mainSection}>
           <h2 className={styles.developerTypeTitle}>풀스택 개발자</h2>
 
           <section className={styles.detailSection}>
@@ -133,7 +119,7 @@ const renderResults = (developer: "front" | "back" | "fullStack" | null) => {
               네트워크 기초 지식 등이 포함됩니다.
             </p>
           </section>
-        </motion.section>
+        </section>
       );
   }
 };
@@ -162,7 +148,22 @@ function ResultPage(): JSX.Element {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <h2 className={styles.title}>당신의 결과는??</h2>
-        {renderResults(developer)}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className={styles.resultContainer}
+        >
+          {renderResults(developer)}
+          <section className={styles.buttons}>
+            <Button type="primary" className={styles.button}>
+              결과 공유
+            </Button>
+            <Button type="primary" className={styles.button}>
+              다시 하기
+            </Button>
+          </section>
+        </motion.div>
       </div>
     </div>
   );
