@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "./ResultPage.module.scss";
 import { motion } from "framer-motion";
-import { Button, Modal } from "antd";
+import { Button } from "antd";
 import useRestart from "../../hooks/useRestart/useRestart";
 import useModal from "../../hooks/useModal/useModal";
+import ModalContainer from "../../components/modalContainer/ModalContainer";
 
 const renderResults = (developer: "front" | "back" | "fullStack" | null) => {
   switch (developer) {
@@ -176,7 +177,7 @@ function ResultPage(): JSX.Element {
               type="primary"
               className={styles.button}
             >
-              개발자 정보
+              개발 정보
             </Button>
             <Button
               onClick={handleRestart}
@@ -188,15 +189,8 @@ function ResultPage(): JSX.Element {
           </section>
         </motion.div>
       </div>
-      <Modal
-        title="개발자 정보"
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer="none"
-        width={900}
-        className={styles.modal}
-      ></Modal>
+
+      <ModalContainer isModalOpen={isModalOpen} handleCancel={handleCancel} />
     </div>
   );
 }
