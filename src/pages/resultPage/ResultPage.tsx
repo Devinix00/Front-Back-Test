@@ -3,6 +3,7 @@ import useQuestionStore from "../../stores/useQuestionStore/useQuestionStore";
 import styles from "./ResultPage.module.scss";
 import { motion } from "framer-motion";
 import { Button } from "antd";
+import useRestart from "../../hooks/useRestart/useRestart";
 
 const renderResults = (developer: "front" | "back" | "fullStack" | null) => {
   switch (developer) {
@@ -126,6 +127,7 @@ const renderResults = (developer: "front" | "back" | "fullStack" | null) => {
 
 function ResultPage(): JSX.Element {
   const { frontArray, backArray } = useQuestionStore();
+  const { handleRestart } = useRestart();
   const [developer, setDeveloper] = useState<
     "front" | "back" | "fullStack" | null
   >(null);
@@ -159,7 +161,11 @@ function ResultPage(): JSX.Element {
             <Button type="primary" className={styles.button}>
               결과 공유
             </Button>
-            <Button type="primary" className={styles.button}>
+            <Button
+              onClick={handleRestart}
+              type="primary"
+              className={styles.button}
+            >
               다시 하기
             </Button>
           </section>
