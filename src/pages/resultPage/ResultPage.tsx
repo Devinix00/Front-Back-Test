@@ -154,15 +154,15 @@ function ResultPage(): JSX.Element {
   };
 
   return (
-    <div className={styles.container}>
+    <motion.div
+      initial={{ opacity: 0, y: -30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className={styles.container}
+    >
       <div className={styles.wrapper}>
         <h2 className={styles.title}>당신의 결과는??</h2>
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className={styles.resultContainer}
-        >
+        <motion.div className={styles.resultContainer}>
           {renderResults(developer)}
           <Button
             onClick={handleCopyClipBoard}
@@ -191,7 +191,7 @@ function ResultPage(): JSX.Element {
       </div>
 
       <ModalContainer isModalOpen={isModalOpen} handleCancel={handleCancel} />
-    </div>
+    </motion.div>
   );
 }
 
